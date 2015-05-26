@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:form>
+        <h1>Riepilogo ordine:</h1>
+        <table>
+            <tr>
+                <th>Nome Prodotto   </th>
+                <th>Prezzo Unitario   </th>
+                <th>Quantità   </th>
+                <th>Prezzo   </th>
+            </tr>
+            <ui:repeat value="#{orderController.orderLines}" var="orderLine">
+                <tr>
+                    <td><h:commandLink action="#{productController.findProduct(orderLine.product.id)}" value="#{orderLine.product.name}"></h:commandLink></td>
+                    <td>${orderLine.unitPrice}</td>
+                    <td>${orderLine.quantity}</td>
+                    <td>${orderLine.unitPrice * orderLine.quantity}</td>
+                </tr>
+            </ui:repeat>
+        </table>
+        <div>Totale ordine : ${orderController.calculateTotal()}</div>
+        <div><h:commandLink action="#{customerController.findCustomer(customerController.customer.id)}" value="Il tuo profilo"></h:commandLink></div>
+        <div><h:commandLink action="#{customerController.newOrder}" value="Nuovo ordine"></h:commandLink></div>
+    </h:form>
+</f:view>
+</html>

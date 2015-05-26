@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<body>
+<f:view>
+<h:form>
+    <div>Name: <h:inputText value="#{productController.name}"
+                            required="true"
+                            requiredMessage="Name is mandatory" id="name"/> <strong><h:message for="name" /></strong>
+    </div>
+    <div>Code: <h:inputText value="#{productController.code}"
+                            required="true"
+                            requiredMessage="Code is mandatory"  id="code"/> <h:message for="code" />
+    </div>
+    <div>Price: <h:inputText value="#{productController.price}"
+                             required="true"
+                             requiredMessage="Price is mandatory"
+                             converterMessage="Price must be a number" id="price"/> <h:message for="price" />
+    </div>
+    <div>Quantity: <h:inputText value="#{productController.quantity}"
+                                required="true"
+                                requiredMessage="Quantity is mandatory"
+                                converterMessage="Quantity must be a number" id="quantity"/> <h:message for="quantity" />
+    </div>
+    <div>Description: <h:inputTextarea value="#{productController.description}"
+                                       required="false"
+                                       cols="20" rows="5" />
+    </div>
+    <div>
+        <h:commandButton value="Submit"  action="#{productController.createProduct}"/>
+    </div>
+</h:form>
+</f:view>
+</body>
+</html>
