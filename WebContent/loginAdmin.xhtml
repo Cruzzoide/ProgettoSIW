@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<body>
+
+<h1>LOGIN AMMINISTRATORE</h1>
+<f:view>
+    <h:form>
+        <div><strong>Email</strong>: <h:inputText value="#{adminController.email}"
+                                 required="true"
+                                 requiredMessage="Email is mandatory" id="email"/> <strong><h:message for="email" /></strong>
+        </div>
+        <div><strong>Password</strong>: <h:inputText value="#{adminController.password}"
+                                    required="true"
+                                    requiredMessage="Password is mandatory" id="password"/> <strong><h:message for="password" /></strong>
+        </div>
+        <div><h:commandButton value="Effettua Login" action="#{adminController.adminLogin}" /></div>
+    </h:form>
+</f:view>
+</body>
+</html>

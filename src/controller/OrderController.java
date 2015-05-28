@@ -32,7 +32,6 @@ public class OrderController {
     @ManagedProperty(value="#{customerController}")
     private CustomerController customerController;
 
-
     public OrderController(){
         this.orderLines = new ArrayList<OrderLine>();
     }
@@ -47,25 +46,26 @@ public class OrderController {
 
     public String closeOrder(){
         this.closeTime = new Date();
-        this.orderFacade.closeOrder(order,closeTime);
+        this.orderFacade.closeOrder(order,closeTime,orderLines);
 
-        if(this.customerController.getOrders() == null){
-            this.customerController.setOrders(new ArrayList<Order>());
-        }
-
-        this.customerController.getOrders().add(order);
+        if(this.customerController.getCustomer().getOrders() == null) {
+            this.customerController.getCustomer().setOrders(new ArrayList<Order>());
+        }else
+            this.orderFacade.addOrder(this.customerController.getCustomer(),order);
 
         return "order";
     }
 
-    public String byeOrder(){
-        this.order=null;
-        return "indexCustomer";
+    public String allOrders(){
+        this.orders = orderFacade.allOrders();
+
+        return "orders";
 
     }
 
     public String findOrder(Long id){
         this.order = this.customerController.getCustomerFacade().getOrder(id);
+        this.orderLines = order.getOrderLines();
         return "order";
     }
 
@@ -78,9 +78,8 @@ public class OrderController {
         return tot;
     }
 
-    public String evasionOrder(Long id){
-        this.order = orderFacade.getOrder(id);
-        orderFacade.evasionOrder(order);
+    public String evadeOrder(Order o){
+        this.orderFacade.evadeOrder(o);
 
         return "orders";
     }

@@ -18,10 +18,14 @@
                 <tr>
                     <td><h:commandLink action="#{orderController.findOrder(order.id)}" value="#{order.id}"></h:commandLink></td>
                     <td>${order.customer_id.firstName}</td>
-                    <td><h:commandLink action="#{orderController.evasionOrder(order.id)}" value="Evadi Ordine"></h:commandLink></td>
+                    <td><h:commandLink action="#{orderController.evadeOrder(order)}"
+                                       value="Evadi Ordine"
+                                       rendered="#{order.checkDispatched()}">
+                    </h:commandLink></td>
                 </tr>
             </ui:repeat>
         </table>
+        <h:link value="Torna alla HomePage" outcome="homePageAdmin" />
     </h:form>
 </f:view>
 </body>

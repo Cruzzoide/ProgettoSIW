@@ -33,7 +33,6 @@ public class OrderLineController {
         OrderLine orderLine = new OrderLine(p.getPrice(),quantity,p);
 
         if (p.getQuantity() - quantity >= 0)  {
-            this.orderLineFacade.aggiungiLinea(orderLine,o);
             this.orderController.getOrderLines().add(orderLine);
             return "basket";
         }

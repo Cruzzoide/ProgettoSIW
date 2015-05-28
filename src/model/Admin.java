@@ -1,8 +1,7 @@
 package model;
 
-import java.util.Date;
-
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"firstName","lastName"}))
@@ -28,19 +27,15 @@ public class Admin{
     private Date registrationDate;
 
     @Column(nullable = false)
-    private String address;
-
-    @Column(nullable = false)
     private String password;
 
     public Admin(){
     }
 
-    public Admin(String firstName, String lastName, Date dateOfBirth, String address, String password){
+    public Admin(String firstName, String lastName, Date dateOfBirth, String password){
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
-        this.address = address;
         this.password = password;
     }
 
@@ -54,14 +49,6 @@ public class Admin{
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public Date getDateOfBirth() {
@@ -110,5 +97,9 @@ public class Admin{
 
     public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public boolean checkPassword(String password) {
+        return this.password.equals(password);
     }
 }

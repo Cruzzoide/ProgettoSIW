@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<body>
+
+<h1>HOME PAGE</h1>
+<f:view>
+    <h:form>
+        <h2>${customerController.customer.firstName} ${customerController.customer.lastName}</h2>
+        <ul>
+            <li><div><h:commandLink action="#{productController.catalogProducts}" value="Visita il catalogo "></h:commandLink></div></li>
+            <li><div><h:commandLink action="#{orderController.createOrder(customerController.customer)}" value="Nuovo ordine"></h:commandLink></div></li>
+            <li><div><h:commandLink action="#{customerController.customerOrders(customerController.customer)}" value="Consulta i tuoi ordini"></h:commandLink></div></li>
+            <li><div><h:link value="Carello" outcome="basket" /></div></li>
+            <li><div><h:commandLink value="Effettua Logout" action="#{customerController.customerLogout}" /></div></li>
+        </ul>
+    </h:form>
+</f:view>
+</body>
+</html>

@@ -8,6 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "orders")
+@NamedQuery(name = "findAllOrders", query = "SELECT o FROM Order o")
 public class Order {
 
     @Id
@@ -20,9 +21,9 @@ public class Order {
     @Temporal(TemporalType.TIMESTAMP)
     private Date closeTime;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "orders_id")
-    @OrderBy("creationTime asc")
+    //@OrderBy("creationTime asc")
     private List<OrderLine> orderLines;
 
     private String status;
@@ -38,6 +39,10 @@ public class Order {
         this.customer_id = customer_id;
         this.orderLines = new LinkedList<OrderLine>();
         this.status = "Not dispatched";
+    }
+
+    public boolean checkDispatched(){
+        return this.status.equals("Not dispatched");
     }
 
     public void setCreationTime(Date creationTime) {this.creationTime = creationTime;}
@@ -67,7 +72,7 @@ public class Order {
     }
 
     public void dispatched(){
-        this.status = "dispatched";
+        this.setStatus("Dispatched");
     }
 
     @Override

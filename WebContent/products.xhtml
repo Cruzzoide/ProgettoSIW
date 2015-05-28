@@ -20,11 +20,27 @@
                     <td><h:commandLink action="#{productController.findProduct(product.id)}" value="#{product.name}"></h:commandLink></td>
                     <td>${product.price}</td>
                     <td>${product.quantity}</td>
-                    <td><h:commandLink action="#{productController.deleteProductFromCatalog(product.id)}" value="Cancella Prodotto"></h:commandLink></td>
-                    <td><h:commandLink action="#{productController.addProduct(product)}" value="Aggiungi Prodotto a ordine"></h:commandLink></td>
+                    <td><h:commandLink action="#{productController.deleteProductFromCatalog(product.id)}"
+                                       value="Cancella Prodotto"
+                                       rendered="#{adminController.admin!=null}">
+                    </h:commandLink></td>
+                    <td><h:commandLink action="#{productController.addProduct(product)}"
+                                       value="Aggiungi Prodotto a ordine"
+                                       rendered="#{orderController.order!=null and adminController.admin==null and orderController.order.closeTime==null and customerController.customer!=null}">
+                    </h:commandLink></td>
+                    <td><h:link outcome="modifyProduct"
+                                value="Modifica dati Prodotto"
+                                rendered="#{adminController.admin!=null && customerController.customer==null}">
+                    </h:link></td>
                 </tr>
             </ui:repeat>
         </table>
+        <h:link value="Torna alla HomePage"
+                outcome="homePageAdmin"
+                rendered="#{adminController.admin!=null}"/>
+        <h:link value="Torna alla HomePage"
+                outcome="homePage"
+                rendered="#{customerController.customer!=null}"/>
     </h:form>
 </f:view>
 </body>
