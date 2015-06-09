@@ -10,9 +10,6 @@ import javax.persistence.PersistenceContext;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Michele on 20/05/15.
- */
 @Stateless
 public class OrderFacade {
 
@@ -24,8 +21,6 @@ public class OrderFacade {
         Order o = new Order(creationTime, customer_id);
         return o;
     }
-
-
 
     public Order getOrder(Long id){
         return em.find(Order.class, id);
@@ -39,12 +34,6 @@ public class OrderFacade {
         order.setCloseTime(closeTime);
         order.setOrderLines(orderLines);
 
-        for(OrderLine ol : orderLines) {
-            Integer newQta = ol.getProduct().getQuantity() - ol.getQuantity();
-            ol.getProduct().setQuantity(newQta);
-            em.merge(ol.getProduct());
-        }
-
         em.persist(order);
     }
 
@@ -54,6 +43,13 @@ public class OrderFacade {
     }
 
     public void evadeOrder(Order o) {
+
+        for(OrderLine ol : o.getOrderLines()) {
+            Integer newQta = ol.getProduct().getQuantity() - ol.getQuantity();
+            ol.getProduct().setQuantity(newQta);
+            em.merge(ol.getProduct());
+        }
+
         o.dispatched();
         em.merge(o);
     }

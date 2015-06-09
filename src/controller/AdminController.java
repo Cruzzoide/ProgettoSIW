@@ -8,10 +8,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.Date;
 
-/**
- * Created by Michele on 26/05/15.
- */
-
 @ManagedBean(name="adminController")
 @SessionScoped
 public class AdminController {
@@ -44,7 +40,7 @@ public class AdminController {
 
     public String adminLogout(){
         this.admin = null;
-        return "loginAdmin";
+        return "index";
     }
 
 

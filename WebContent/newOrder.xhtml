@@ -7,8 +7,12 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <h1> Questo è l'ordine di :</h1>
-    <div>Nome: ${orderController.customer_id.firstName}</div>
-    <div>Data di creazione : ${orderController.creationTime}</div>
-    <div><h:form><h:commandLink action="#{productController.catalogProducts}" value="Aggiungi prodotti a ordine"></h:commandLink></h:form></div>
+    <div><strong>Nome</strong>: ${orderController.customer_id.firstName}</div>
+    <div><strong>Data di creazione</strong> : ${orderController.creationTime}</div>
+    <div>
+        <h:form>
+            <h:link value="Aggiungi Prodotti all'Ordine" outcome="products" />
+        </h:form>
+    </div>
 </f:view>
 </html>

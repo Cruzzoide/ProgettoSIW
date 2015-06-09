@@ -10,10 +10,10 @@
     <h1>Riepilogo ordine:</h1>
         <table>
             <tr>
-                <th>Nome Prodotto </th>
-                <th>Prezzo Unitario </th>
-                <th>Quantità  </th>
-                <th>Prezzo </th>
+                <th>Nome Prodotto   </th>
+                <th>Prezzo Unitario   </th>
+                <th>Quantità   </th>
+                <th>Prezzo   </th>
             </tr>
             <ui:repeat value="#{orderController.orderLines}" var="orderLine">
                 <tr>
@@ -26,6 +26,7 @@
             </ui:repeat>
         </table>
         <div>Totale ordine : ${orderController.calculateTotal()}</div>
+        <div><h:link value="HomePage" outcome="homePage" /></div>
         <div><h:commandLink action="#{productController.catalogProducts}" value="Aggiungi altri prodotti all'ordine"></h:commandLink></div>
         <div><h:commandLink action="#{orderController.closeOrder}" value="Chiudi ordine"></h:commandLink></div>
     </h:form>

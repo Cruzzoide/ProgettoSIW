@@ -6,16 +6,15 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <h1>Customer details:</h1>
-    <div>FirstName: ${customerController.customer.firstName}</div>
-    <div>LastName: ${customerController.customer.lastName}</div>
-    <div>Date of Birth: ${customerController.customer.dateOfBirth}</div>
-    <div>Registration Date: ${customerController.customer.registrationDate}</div>
-    <div>Email: ${customerController.customer.email}</div>
+    <h1>Dettagli Cliente:</h1>
+    <div><strong>Nome</strong>: ${customerController.customer.firstName}</div>
+    <div><strong>Cognome</strong>: ${customerController.customer.lastName}</div>
+    <div><strong>Data di Nascita</strong>: ${customerController.customer.dateOfBirth}</div>
+    <div><strong>Data di registrazione</strong>: ${customerController.customer.registrationDate}</div>
+    <div><strong>Email</strong>: ${customerController.customer.email}</div>
     <h:form>
         <div><h:commandLink action="#{customerController.customerAddress(customerController.customer.id)}" value="Indirizzo di residenza"></h:commandLink></div>
-        <div><h:commandLink action="#{customerController.customerOrders(customerController.customer.id)}" value="Consulta i tuoi ordini"></h:commandLink></div>
-        <div><h:commandLink action="#{orderController.createOrder(customerController.customer)}" value="Nuovo ordine"></h:commandLink></div>
+        <div><h:commandLink action="#{customerController.customerOrders(customerController.customer)}" value="Consulta i suoi ordini"></h:commandLink></div>
     </h:form>
 </f:view>
 </html>

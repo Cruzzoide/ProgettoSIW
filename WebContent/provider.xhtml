@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h1>Dettagli fornitore:</h1>
+    <div><strong>Nome</strong>: ${providerController.provider.name}</div>
+    <div><strong>Numero di Telefono</strong>: ${providerController.provider.phoneNumber}</div>
+    <div><strong>Email</strong>: ${providerController.provider.email}</div>
+    <div><strong>P.IVA</strong>: ${providerController.provider.vatin}</div>
+    <h:form>
+        <div><h:commandLink action="#{providerController.providerAddress(providerController.provider)}" value="Indirizzo fornitore"></h:commandLink></div>
+        <div><h:link outcome="products" value="Consulta i suoi ordini"/></div>
+    </h:form>
+</f:view>
+</html>

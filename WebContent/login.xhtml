@@ -11,12 +11,12 @@
 <f:view>
     <h:form>
         <div><strong>Email</strong>: <h:inputText value="#{customerController.email}"
-                                required="true"
-                                requiredMessage="Email is mandatory" id="email"/> <strong><h:message for="email" /></strong>
+                                                  required="true"
+                                                  requiredMessage="Email is mandatory" id="email"/> <strong><h:message for="email" /></strong>
         </div>
-        <div><strong>Password</strong>: <h:inputText value="#{customerController.password}"
-                                 required="true"
-                                 requiredMessage="Password is mandatory" id="password"/> <strong><h:message for="password" /></strong>
+        <div><strong>Password</strong>: <h:inputSecret value="#{customerController.password}"
+                                                     required="true"
+                                                     requiredMessage="Password is mandatory" id="password"/> <strong><h:message for="password" /></strong>
         </div>
         <div><h:commandButton value="Effettua Login" action="#{customerController.customerLogin}" /></div>
         <div><h:link value="Registrati" outcome="newCustomer" /></div>

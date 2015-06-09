@@ -1,6 +1,8 @@
 package model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NamedQuery(name = "findAllProducts", query = "SELECT p FROM Product p")
@@ -25,6 +27,9 @@ public class Product {
     @Column(unique = true, nullable = false)
     private String code;
 
+    @ManyToMany
+    private List<Provider> providers;
+
     public Product() {
     }
 
@@ -34,6 +39,7 @@ public class Product {
         this.description = description;
         this.code = code;
         this.quantity = quantity;
+        this.providers = new ArrayList<Provider>();
     }
 
     //          Getters & Setters        
@@ -81,6 +87,10 @@ public class Product {
     public void setPrice(Float price) {
         this.price = price;
     }
+
+    public List<Provider> getProviders() {return providers;}
+
+    public void setProviders(List<Provider> providers) {this.providers = providers;}
 
     public boolean equals(Object obj) {
         Product product = (Product)obj;

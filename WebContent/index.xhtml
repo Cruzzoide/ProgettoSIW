@@ -12,10 +12,10 @@
 <f:view>
     <h:form>
         <ul>
-            <li><div><h:link value="Inserisci un nuovo Prodotto" outcome="newProduct" /></div></li>
             <li><div><h:commandLink action="#{productController.catalogProducts}" value="Visita il catalogo"></h:commandLink></div></li>
             <li><div><h:link value="Registrati" outcome="newCustomer" /></div></li>
-            <li><div><h:commandLink action="#{customerController.allCustomer}" value="Tutti i customer"></h:commandLink></div></li>
+            <li><div><h:link value="Effettua Login" outcome="login" /></div></li>
+            <li><div><h:link value="Effettua Login Admin" outcome="loginAdmin" /></div></li>
         </ul>
     </h:form>
 </f:view>

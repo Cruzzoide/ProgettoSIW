@@ -25,8 +25,14 @@
             </ui:repeat>
         </table>
         <div>Totale ordine : ${orderController.calculateTotal()}</div>
-        <div><h:commandLink action="#{customerController.findCustomer(customerController.customer.id)}" value="Il tuo profilo"></h:commandLink></div>
+        <div>Stato Ordine : ${orderController.order.status}</div>
+        <div><h:link value="HomePage"
+                     outcome="homePage"
+                     rendered="#{customerController.customer!=null}"/></div>
         <div><h:commandLink action="#{customerController.newOrder}" value="Nuovo ordine"></h:commandLink></div>
+        <div><h:commandLink action="#{orderController.allOrders}"
+                            value="Lista ordini"
+                rendered="#{adminController.admin!=null}"></h:commandLink></div>
     </h:form>
 </f:view>
 </html>

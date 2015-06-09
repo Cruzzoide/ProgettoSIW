@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -38,6 +39,7 @@ public class Provider {
         this.email = email;
         this.vatin = vatin;
         this.address = address;
+        this.products = new ArrayList<Product>();
     }
 
     public Long getId() {return this.id;}
@@ -63,6 +65,8 @@ public class Provider {
     public void setVatin(String vatin) {this.vatin = vatin;}
 
     public void setAddress(Address address) {this.address = address;}
+
+    public void setProducts(List<Product> products) {this.products = products;}
 
     public boolean equals(Object obj) {
         Provider provider = (Provider)obj;

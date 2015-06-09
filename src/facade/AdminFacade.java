@@ -7,9 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-/**
- * Created by Michele on 26/05/15.
- */
 @Stateless
 public class AdminFacade {
 
@@ -26,7 +23,7 @@ public class AdminFacade {
             a = (Admin) query.getSingleResult();
 
         }catch (Exception e){
-            throw new Exception("Aci ma che snai a prov√†!");
+            throw new Exception("Aci ma che snai a prov‡!");
         }
         if(!a.checkPassword(password))
             throw new Exception("Password non corretta!");

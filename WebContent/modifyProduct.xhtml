@@ -8,20 +8,20 @@
 <body>
 <f:view>
     <h:form>
-        <div>Nuovo Prezzo: <h:inputText value="#{productController.price}"
+        <h1>Modifica Prodotto: ${productController.product.name} </h1>
+        <div><strong>Prezzo:</strong> <h:inputText value="#{productController.price}"
                                  required="true"
                                  requiredMessage="Price is mandatory"
                                  converterMessage="Price must be a number" id="price"/> <h:message for="price" />
         </div>
-        <div>Nuova Quantità: <h:inputText value="#{productController.quantity}"
+        <div><strong>Quantità:</strong> <h:inputText value="#{productController.quantity}"
                                     required="true"
                                     requiredMessage="Quantity is mandatory"
                                     converterMessage="Quantity must be a number" id="quantity"/> <h:message for="quantity" />
         </div>
-        <div>Descrizione: <h:inputTextarea ${productController.product.description} value="#{productController.description}"
+        <div><strong>Descrizione:</strong> <h:inputTextarea value="#{productController.description}"
                                            required="false"
-                                           cols="20" rows="5" />
-        </div>
+                                           cols="20" rows="5" /></div>
         <div>
             <h:commandButton value="Submit"  action="#{productController.modifyProduct}"/>
         </div>

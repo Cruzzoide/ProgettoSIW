@@ -28,17 +28,17 @@ public class CustomerController {
 
     private String street;
     private String city;
-    private String state;
     private String zipcode;
     private String country;
     private Address address;
     private List<Customer> customers;
+    private String message;
 
     public String createCustomer(){
-        this.address = new Address(street,city,state,zipcode,country);
+        this.address = new Address(street,city,zipcode,country);
         this.customer = customerFacade.createCustomer(firstName,lastName,email,dateOfBirth,password,address);
 
-        return "customer";
+        return "homePage";
     }
 
     public String findCustomer(Long id){
@@ -65,13 +65,28 @@ public class CustomerController {
         return "address";
     }
 
-    public String customerOrders(Long id){
-        this.orders = customer.getOrders();
+    public String customerOrders(Customer c){
+        this.orders = customerFacade.customerOrders(c);
 
-        if(orders!=null)
-            return "customerOrders";
-        else
-            return "index";
+        return "customerOrders";
+    }
+
+    public String customerLogin(){
+
+        try{
+            this.customer = customerFacade.checkPassword(this.email, this.password);
+            return "homePage";
+
+        }catch (Exception e){
+
+            this.message = e.getMessage();
+            return "loginErr";
+        }
+    }
+
+    public String customerLogout(){
+        this.customer = null;
+        return "login";
     }
 
 
@@ -100,6 +115,10 @@ public class CustomerController {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public String getMessage() {return message;}
+
+    public void setMessage(String message) {this.message = message;}
 
     public String getCountry() {
         return country;
@@ -149,21 +168,9 @@ public class CustomerController {
         this.lastName = lastName;
     }
 
-    public String getPassword() {
-        return password;
-    }
+    public String getPassword() {return password;}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
+    public void setPassword(String password) {this.password = password;}
 
     public String getStreet() {
         return street;

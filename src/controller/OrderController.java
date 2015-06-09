@@ -80,8 +80,18 @@ public class OrderController {
 
     public String evadeOrder(Order o){
         this.orderFacade.evadeOrder(o);
-
         return "orders";
+    }
+
+    public boolean checkEvade(Order o){
+
+        for(OrderLine ol : o.getOrderLines()) {
+            Integer newQta = ol.getProduct().getQuantity() - ol.getQuantity();
+            if(newQta < 0)
+                return false;
+        }
+
+        return true;
     }
 
     public Date getCloseTime() {

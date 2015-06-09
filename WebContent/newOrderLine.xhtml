@@ -7,16 +7,12 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <h:form>
-        <li>Prodotto: ${productController.product.name}</li>
-        <!-- QUI VA IL PREZZO -->
-
-        <li>Quantita: <h:inputTextarea value="#{orderLineController.quantity}"
+        <h1>Inserisci la quantità desiderata</h1>
+        <li><strong>Prodotto</strong>: ${productController.product.name}</li>
+        <li><strong>Quantita</strong>: <h:inputText value="#{orderLineController.quantity}"
                                        required="true"
                                        requiredMessage="La quantita' e' obbligatorio"
-                                       id="quantita"/> <h:message for="quantita"/>
-        </li>
-
-
+                                       id="quantita"/> <h:message for="quantita"/></li>
 
         <h:commandButton styleClass="btn btn-primary" value="Aggiungi ad ordine"
                          action="#{orderLineController.createOrderLine(orderController.order, productController.product)}"/>

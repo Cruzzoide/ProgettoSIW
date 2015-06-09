@@ -10,9 +10,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-/**
- * Created by Michele on 20/05/15.
- */
 @ManagedBean(name="orderLineController")
 @SessionScoped
 public class OrderLineController {

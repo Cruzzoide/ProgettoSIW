@@ -8,9 +8,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.List;
 
-/**
- * Created by Michele on 17/05/15.
- */
 @ManagedBean(name="productController")
 @SessionScoped
 public class ProductController {
@@ -55,7 +52,20 @@ public class ProductController {
         return "newOrderLine";
     }
 
+    public String goModify(Product p){
+        this.product = p;
+        this.price = p.getPrice();
+        this.description = p.getDescription();
+        this.quantity = p.getQuantity();
 
+        return "modifyProduct";
+    }
+
+    public String modifyProduct(){
+        productFacade.modifyProduct(product,price,quantity,description);
+
+        return "product";
+    }
 
     public String getCode() {
         return code;

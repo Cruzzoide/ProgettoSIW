@@ -7,9 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-/**
- * Created by Michele on 17/05/15.
- */
 @Stateless(name="pFacade")
 public class ProductFacade {
 
@@ -35,4 +32,12 @@ public class ProductFacade {
         em.remove(getProduct(id));
     }
 
+
+    public void modifyProduct(Product product, Float price, Integer quantity, String description) {
+        product.setPrice(price);
+        product.setQuantity(quantity);
+        product.setDescription(description);
+        em.merge(product);
+
+    }
 }

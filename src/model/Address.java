@@ -15,8 +15,6 @@ public class Address {
     @Column(nullable = false)
     private String city;
 
-    @Column(nullable = false)
-    private String state;
 
     @Column(nullable = false)
     private String zipcode;
@@ -27,9 +25,8 @@ public class Address {
     public Address(){
     }
 
-    public Address(String street, String city, String state, String zipcode, String country){
+    public Address(String street, String city, String zipcode, String country){
         this.street = street;
-        this.state = state;
         this.city = city;
         this.zipcode = zipcode;
         this.country = country;
@@ -41,7 +38,6 @@ public class Address {
 
     public String getCountry() {return country;}
 
-    public String getState() {return state;}
 
     public String getStreet() {return street;}
 
@@ -51,7 +47,6 @@ public class Address {
 
     public void setCountry(String country) {this.country = country;}
 
-    public void setState(String state) {this.state = state;}
 
     public void setStreet(String street) {this.street = street;}
 
@@ -74,7 +69,6 @@ public class Address {
         sb.append(", street='").append(street);
         sb.append(", city=").append(city);
         sb.append(", country='").append(country);
-        sb.append(", state='").append(state);
         sb.append(", zipcode='").append(zipcode);
         sb.append("}\n");
         return sb.toString();

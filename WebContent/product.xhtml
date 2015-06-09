@@ -8,10 +8,10 @@
 <f:view>
     <h1>${productController.product.name}</h1>
     <h2>Details</h2>
-    <div>Code: ${productController.product.code}</div>
-    <div>Price: ${productController.product.price}</div>
-    <div>Quantity: ${productController.product.quantity}</div>
-    <div>Description: ${productController.product.description}</div>
+    <div><strong>Code</strong>: ${productController.product.code}</div>
+    <div><strong>Price</strong>: ${productController.product.price}</div>
+    <div><strong>Quantity</strong>: ${productController.product.quantity}</div>
+    <div><strong>Description</strong>: ${productController.product.description}</div>
     <h:form><h:commandLink action="#{productController.catalogProducts}" value="Catalogo"></h:commandLink></h:form>
 </f:view>
 </html>
