@@ -1,0 +1,35 @@
+SPECIFICHE DEL PROGETTO DI SIW - APPELLO GIUGNO 2015
+
+Russo Carlo Maria (448962)
+Sampieri Michele (445155)
+Silvi Leonardo (451937) 
+
+===========================================================
+
+Caso d'uso UC1: Consulta listino -> OK
+Caso d'uso UC2: Effettua ordine -> OK
+Caso d'uso UC3: Consulta i propri ordini -> OK
+Caso d'uso UC4: Inserimento prodotti nel catalogo -> OK
+Caso d'uso UC5: Recupera indirizzo cliente -> OK
+Caso d'uso UC6: Evasione ordine -> OK
+
+===========================================================
+
+Caso d'uso UC1: Consulta listino
+Dalla homepage è possibile visualizzare il catalogo prodotti con tutti i prodotti in vendita ed è possibile clickare su di essi per avere le informazioni sul prodotto.
+
+Caso d'uso UC2: Effettua ordine
+Dopo aver effettuato il login, un cliente può creare un nuovo ordine ed inserire in esso n prodotti finchè non indica la chiusura dell'ordine stesso. L'ordine viene registrato ed è pronto per l'evasione.
+
+Caso d'uso UC3: Consulta i propri ordini
+L'utente loggato può consultare la lista dei propri ordini e per ogni ordine avere più dettagli sui prodotti scelti e lo stato dell'ordine stesso.
+
+Caso d'uso UC4: Inserimento prodotti nel catalogo
+L'amministratore, una volta autenticato, può aggiungere un nuovo prodotto nel catalogo.
+
+Caso d'uso UC5: Recupera indirizzo cliente
+L'amministratore loggato può visualizzare tutti gli ordini e per ciascuno di essi tutti i dati del cliente che l'ha effettuato, compreso l'indirizzo
+
+Caso d'uso UC6: Evasione ordine
+L'amministratore loggato vede tutti gli ordini con i relativi status: se l'ordine è chiuso e se nel magazzino c'è una sufficiente quantità di prodotti, allora è possibile evaderlo, altrimenti il sistema mostra un messaggio.
+
