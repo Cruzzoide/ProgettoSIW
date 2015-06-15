@@ -5,21 +5,30 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
 <body>
 
 <h1>LOGIN CLIENTE</h1>
 <f:view>
-    <h:form>
-        <div><strong>Email</strong>: <h:inputText value="#{customerController.email}"
-                                                  required="true"
-                                                  requiredMessage="Email is mandatory" id="email"/> <strong><h:message for="email" /></strong>
+    <h:form styleClass="form-inline">
+        <div class="form-group"><strong>Email</strong>: <h:inputText value="#{customerController.email}"
+                                                                     styleClass="form-control"
+                                                                     required="true"
+                                                                     requiredMessage="Email is mandatory" id="email"/> <strong><h:message for="email" /></strong>
         </div>
-        <div><strong>Password</strong>: <h:inputSecret value="#{customerController.password}"
-                                                     required="true"
-                                                     requiredMessage="Password is mandatory" id="password"/> <strong><h:message for="password" /></strong>
+        <div class="form-group"><strong>Password</strong>: <h:inputSecret value="#{customerController.password}"
+                                                                          styleClass="form-control"
+                                                                          required="true"
+                                                                          requiredMessage="Password is mandatory" id="password"/> <strong><h:message for="password" /></strong>
         </div>
-        <div><h:commandButton value="Effettua Login" action="#{customerController.customerLogin}" /></div>
+        <div class="form-group"><h:commandButton value="Effettua Login" styleClass="btn btn-primary" action="#{customerController.customerLogin}" /></div>
         <div><h:link value="Registrati" outcome="newCustomer" /></div>
+        <div><h:link value="HomePage" outcome="index" /></div>
+
     </h:form>
 </f:view>
 </body>

@@ -13,7 +13,7 @@ import java.util.List;
 @Stateless
 public class OrderFacade {
 
-    @PersistenceContext(unitName = "unit-jee-es1")
+    @PersistenceContext(unitName = "unit-progetto-siw")
     private EntityManager em;
 
 

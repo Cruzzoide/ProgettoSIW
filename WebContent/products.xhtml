@@ -4,36 +4,56 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" >
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
 <body>
 <f:view>
     <h1> Catalogo Prodotti</h1>
     <h:form>
-        <table>
+        <table class="table table-striped">
+            <thead>
             <tr>
-                <th>Nome  </th>
-                <th>Prezzo  </th>
-                <th>Quantità  </th>
+                <th> Nome  </th>
+                <th> Prezzo  </th>
+                <th> Quantità  </th>
+                <c:if test="#{adminController.admin!=null}">
+                    <th> Cancellazione </th>
+                    <th> Modifica </th>
+                </c:if>
+                <c:if test="#{orderController.order!=null and adminController.admin==null and orderController.order.closeTime==null and customerController.customer!=null}">
+                    <th> Aggiungi a Ordine </th>
+                </c:if>
             </tr>
+            </thead>
+            <tbody>
             <ui:repeat value="#{productController.products}" var="product">
                 <tr>
                     <td><h:commandLink action="#{productController.findProduct(product.id)}" value="#{product.name}"></h:commandLink></td>
                     <td>${product.price}</td>
                     <td>${product.quantity}</td>
+
+                    <c:if test="#{adminController.admin!=null and customerController.customer==null}">
                     <td><h:commandLink action="#{productController.deleteProductFromCatalog(product.id)}"
-                                       value="Cancella Prodotto"
-                                       rendered="#{adminController.admin!=null and customerController.customer==null}">
-                    </h:commandLink></td>
+                                       value="Cancella Prodotto">
+                    </h:commandLink></td></c:if>
+
+                    <c:if test="#{orderController.order!=null and adminController.admin==null and orderController.order.closeTime==null and customerController.customer!=null}">
                     <td><h:commandLink action="#{productController.addProduct(product)}"
-                                       value="Aggiungi Prodotto a ordine"
-                                       rendered="#{orderController.order!=null and adminController.admin==null and orderController.order.closeTime==null and customerController.customer!=null}">
-                    </h:commandLink></td>
+                                       value="Aggiungi Prodotto a ordine">
+                    </h:commandLink></td></c:if>
+
+                    <c:if test="#{adminController.admin!=null and customerController.customer==null}">
                     <td><h:commandLink action="#{productController.goModify(product)}"
-                                value="Modifica dati Prodotto"
-                                rendered="#{adminController.admin!=null and customerController.customer==null}">
-                    </h:commandLink></td>
+                                       value="Modifica dati Prodotto">
+                    </h:commandLink></td></c:if>
                 </tr>
             </ui:repeat>
+            </tbody>
         </table>
         <h:link value="Torna alla HomePage"
                 outcome="homePageAdmin"
@@ -41,6 +61,9 @@
         <h:link value="Torna alla HomePage"
                 outcome="homePage"
                 rendered="#{customerController.customer!=null}"/>
+        <h:link value="Torna alla HomePage"
+                outcome="index"
+                rendered="#{adminController.admin==null and customerController.customer==null}"/>
     </h:form>
 </f:view>
 </body>

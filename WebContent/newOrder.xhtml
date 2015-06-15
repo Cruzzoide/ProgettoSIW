@@ -5,14 +5,20 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
 <f:view>
     <h1> Questo è l'ordine di :</h1>
     <div><strong>Nome</strong>: ${orderController.customer_id.firstName}</div>
     <div><strong>Data di creazione</strong> : ${orderController.creationTime}</div>
     <div>
         <h:form>
-            <h:link value="Aggiungi Prodotti all'Ordine" outcome="products" />
+            <h:commandLink value="Aggiungi Prodotti all'Ordine" action="#{productController.catalogProducts}" />
         </h:form>
     </div>
 </f:view>
+</body>
 </html>

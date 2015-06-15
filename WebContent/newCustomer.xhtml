@@ -5,50 +5,67 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
 <body>
 <f:view>
-    <h:form>
-        <div>Name: <h:inputText value="#{customerController.firstName}"
+    <h:form styleClass="form-horizontal">
+        <h1>Inserisci i tuoi dati</h1>
+
+        <div><strong>Nome</strong>: <h:inputText value="#{customerController.firstName}"
+                                                 styleClass="form-control"
                                 required="true"
                                 requiredMessage="Name is mandatory" id="firstName"/> <strong><h:message for="firstName" /></strong>
         </div>
-        <div>Surname: <h:inputText value="#{customerController.lastName}"
+        <div><strong>Cognome</strong>: <h:inputText value="#{customerController.lastName}"
+                                                    styleClass="form-control"
                                 required="true"
                                 requiredMessage="Code is mandatory"  id="lastName"/> <h:message for="lastName" />
         </div>
-        <div>Email: <h:inputText value="#{customerController.email}"
+        <div><strong>Email</strong>: <h:inputText value="#{customerController.email}"
+                                                  styleClass="form-control"
                                  required="true"
                                  requiredMessage="Email is mandatory" id="email"/> <h:message for="email" />
         </div>
-        <div>Birthday date: <h:inputText value="#{customerController.dateOfBirth}"
+        <div><strong>Data di nascita</strong>: <h:inputText value="#{customerController.dateOfBirth}"
+                                                            styleClass="form-control"
                                     required="true"
                                     requiredMessage="Birthday date is mandatory"
                                     converterMessage="Birthday date must be a date" id="dateOfBirth"><f:convertDateTime pattern="dd-m-yyyy" />
             <h:message for="dateOfBirth" /></h:inputText>
         </div>
-        <div>Password: <h:inputText value="#{customerController.password}"
+        <div><strong>Password</strong>: <h:inputText value="#{customerController.password}"
+                                                     styleClass="form-control"
                                  required="true"
                                  requiredMessage="Password is mandatory" id="password"/> <h:message for="password" />
         </div>
-        <div><h1>Insert your address date here:</h1></div>
-        <div>Street: <h:inputText value="#{customerController.street}"
+
+        <h1>Inserisci i dati di residenza</h1>
+        <div><strong>Via</strong>: <h:inputText value="#{customerController.street}"
+                                                styleClass="form-control"
                                  required="true"
                                  requiredMessage="Street is mandatory" id="street"/> <h:message for="street" />
         </div>
-        <div>City: <h:inputText value="#{customerController.city}"
+        <div><strong>Città</strong>: <h:inputText value="#{customerController.city}"
+                                                  styleClass="form-control"
                                  required="true"
                                  requiredMessage="City is mandatory" id="city"/> <h:message for="city" />
         </div>
-        <div>Zipe code: <h:inputText value="#{customerController.zipcode}"
+        <div><strong>CAP</strong>: <h:inputText value="#{customerController.cap}"
+                                                styleClass="form-control"
                                  required="true"
-                                 requiredMessage="Zipcode is mandatory" id="zipcode"/> <h:message for="zipcode" />
+                                 requiredMessage="cap is mandatory" id="cap"/> <h:message for="cap" />
         </div>
-        <div>Country: <h:inputText value="#{customerController.country}"
+        <div><strong>Stato</strong>: <h:inputText value="#{customerController.country}"
+                                                   styleClass="form-control"
                                  required="true"
                                  requiredMessage="Country is mandatory" id="coutry"/> <h:message for="coutry" />
         </div>
         <div>
-            <h:commandButton value="Submit"  action="#{customerController.createCustomer}"/>
+            <h:commandButton value="Submit"  styleClass="btn btn-default" action="#{customerController.createCustomer}"/>
         </div>
     </h:form>
 </f:view>

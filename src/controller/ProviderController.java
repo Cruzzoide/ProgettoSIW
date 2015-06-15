@@ -10,10 +10,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.List;
 
-/**
- * Created by Michele on 28/05/15.
- */
-
 @ManagedBean(name="providerController")
 @SessionScoped
 public class ProviderController {
@@ -31,18 +27,45 @@ public class ProviderController {
 
     private String street;
     private String city;
-    private String zipcode;
+    private String cap;
     private String country;
     private Address address;
 
+    private List<Provider> providers;
 
     public String createProvider(){
-        this.address = new Address(street,city,zipcode,country);
+        this.address = new Address(street,city,cap,country);
         this.provider = providerFacade.createProvider(name,phoneNumber,email,vatin,address);
 
         return "provider";
     }
 
+    public String findProvider(Long id){
+        this.provider = providerFacade.findProvider(id);
+
+        return "provider";
+    }
+
+    public String allProviders() {
+        this.providers = providerFacade.getAllProviders();
+
+        return "providers";
+    }
+
+    public String providerAddress(Provider p){
+        this.address = providerFacade.getProviderAddress(p);
+
+        return "address";
+
+    }
+
+    public List<Provider> getProviders() {
+        return providers;
+    }
+
+    public void setProviders(List<Provider> providers) {
+        this.providers = providers;
+    }
 
     public Address getAddress() {
         return address;
@@ -132,11 +155,11 @@ public class ProviderController {
         this.vatin = vatin;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public String getcap() {
+        return cap;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public void setcap(String cap) {
+        this.cap = cap;
     }
 }

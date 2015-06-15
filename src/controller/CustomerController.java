@@ -28,14 +28,14 @@ public class CustomerController {
 
     private String street;
     private String city;
-    private String zipcode;
+    private String cap;
     private String country;
     private Address address;
     private List<Customer> customers;
     private String message;
 
     public String createCustomer(){
-        this.address = new Address(street,city,zipcode,country);
+        this.address = new Address(street,city,cap,country);
         this.customer = customerFacade.createCustomer(firstName,lastName,email,dateOfBirth,password,address);
 
         return "homePage";
@@ -86,6 +86,7 @@ public class CustomerController {
 
     public String customerLogout(){
         this.customer = null;
+
         return "login";
     }
 
@@ -180,12 +181,12 @@ public class CustomerController {
         this.street = street;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public String getcap() {
+        return cap;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public void setcap(String cap) {
+        this.cap = cap;
     }
 
     public List<Customer> getCustomers() {return customers;}

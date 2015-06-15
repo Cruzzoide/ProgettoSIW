@@ -10,7 +10,7 @@ import javax.persistence.Query;
 @Stateless
 public class AdminFacade {
 
-    @PersistenceContext(unitName = "unit-jee-es1")
+    @PersistenceContext(unitName = "unit-progetto-siw")
     private EntityManager em;
 
 
@@ -23,7 +23,7 @@ public class AdminFacade {
             a = (Admin) query.getSingleResult();
 
         }catch (Exception e){
-            throw new Exception("Aci ma che snai a provà!");
+            throw new Exception("Utente non registrato!");
         }
         if(!a.checkPassword(password))
             throw new Exception("Password non corretta!");

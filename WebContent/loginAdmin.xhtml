@@ -5,20 +5,27 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<body>
 
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
 <h1>LOGIN AMMINISTRATORE</h1>
 <f:view>
-    <h:form>
-        <div><strong>Email</strong>: <h:inputText value="#{adminController.email}"
+    <h:form styleClass="form-inline">
+        <div class="form-group"><strong>Email</strong>: <h:inputText value="#{adminController.email}"
                                  required="true"
+                                 styleClass="form-control"
                                  requiredMessage="Email is mandatory" id="email"/> <strong><h:message for="email" /></strong>
         </div>
-        <div><strong>Password</strong>: <h:inputSecret value="#{adminController.password}"
+        <div class="form-group"><strong>Password</strong>: <h:inputSecret value="#{adminController.password}"
                                     required="true"
+                                    styleClass="form-control"
                                     requiredMessage="Password is mandatory" id="password"/> <strong><h:message for="password" /></strong>
         </div>
-        <div><h:commandButton value="Effettua Login" action="#{adminController.adminLogin}" /></div>
+        <div class="form-group"><h:commandButton value="Effettua Login" styleClass="btn btn-primary" action="#{adminController.adminLogin}" /></div>
+        <div><h:link value="HomePage" outcome="index" /></div>
     </h:form>
 </f:view>
 </body>

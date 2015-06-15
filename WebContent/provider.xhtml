@@ -5,6 +5,12 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
 <f:view>
     <h1>Dettagli fornitore:</h1>
     <div><strong>Nome</strong>: ${providerController.provider.name}</div>
@@ -13,7 +19,8 @@
     <div><strong>P.IVA</strong>: ${providerController.provider.vatin}</div>
     <h:form>
         <div><h:commandLink action="#{providerController.providerAddress(providerController.provider)}" value="Indirizzo fornitore"></h:commandLink></div>
-        <div><h:link outcome="products" value="Consulta i suoi ordini"/></div>
+        <div><h:link outcome="providers" value="Torna a tutti i fornitori"/></div>
     </h:form>
 </f:view>
+</body>
 </html>

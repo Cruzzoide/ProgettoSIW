@@ -53,6 +53,7 @@ public class OrderController {
         }else
             this.orderFacade.addOrder(this.customerController.getCustomer(),order);
 
+        this.orderLines.clear();
         return "order";
     }
 
@@ -72,8 +73,9 @@ public class OrderController {
     public double calculateTotal(){
         double tot = 0;
 
-        for(OrderLine ol : this.orderLines)
-            tot += ol.getUnitPrice() * ol.getQuantity();
+        for(OrderLine ol : this.order.getOrderLines())
+            if(ol!=null)
+                tot += ol.getUnitPrice() * ol.getQuantity();
 
         return tot;
     }
@@ -92,6 +94,18 @@ public class OrderController {
         }
 
         return true;
+    }
+
+    public String orderNull(){
+        this.order = null;
+        return "homePage";
+    }
+
+    public String deleteProductFromOrder(OrderLine ol){
+        this.orderLines.remove(ol);
+
+        return "basket";
+
     }
 
     public Date getCloseTime() {

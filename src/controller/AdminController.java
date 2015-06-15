@@ -5,6 +5,7 @@ import model.Admin;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import java.util.Date;
 
@@ -23,6 +24,12 @@ public class AdminController {
     private Admin admin;
 
     private String message;
+
+    @ManagedProperty(value="#{customerController}")
+    private CustomerController customerController;
+
+    @ManagedProperty(value="#{orderController}")
+    private OrderController orderController;
 
 
     public String adminLogin(){
@@ -43,6 +50,12 @@ public class AdminController {
         return "index";
     }
 
+    public String backToHomePage(){
+        this.customerController.setCustomer(null);
+        this.orderController.setOrder(null);
+
+        return "homePageAdmin";
+    }
 
     public Admin getAdmin() {
         return admin;
@@ -106,5 +119,21 @@ public class AdminController {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public CustomerController getCustomerController() {
+        return customerController;
+    }
+
+    public void setCustomerController(CustomerController customerController) {
+        this.customerController = customerController;
+    }
+
+    public OrderController getOrderController() {
+        return orderController;
+    }
+
+    public void setOrderController(OrderController orderController) {
+        this.orderController = orderController;
     }
 }

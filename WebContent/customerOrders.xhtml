@@ -5,14 +5,21 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
 <f:view>
-    <h1> Riepilogo dei tuoi ordini chiusi </h1>
+    <h1> Riepilogo ordini di #{customerController.customer.firstName} </h1>
     <h:form>
-        <table>
+        <table class="table table-striped">
             <tr>
                 <th>Data di inzio ordine  </th>
                 <th>Data di chiusura ordine </th>
                 <th>Stato </th>
+                <th>Dettagli Ordine</th>
             </tr>
             <ui:repeat value="#{customerController.orders}" var="order">
                 <tr>
@@ -23,6 +30,14 @@
                 </tr>
             </ui:repeat>
         </table>
+        <div><h:link outcome="homePage"
+                     value="Torna alla tua HomePage"
+                     rendered="#{customerController.customer!=null and adminController.admin==null}"/></div>
+        <div><h:link outcome="homePageAdmin"
+                     value="Torna alla HomePage"
+                     rendered="#{adminController.admin!=null}">
+        </h:link></div>
     </h:form>
 </f:view>
+</body>
 </html>

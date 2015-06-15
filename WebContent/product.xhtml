@@ -5,13 +5,20 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
 <f:view>
     <h1>${productController.product.name}</h1>
     <h2>Details</h2>
-    <div><strong>Code</strong>: ${productController.product.code}</div>
-    <div><strong>Price</strong>: ${productController.product.price}</div>
-    <div><strong>Quantity</strong>: ${productController.product.quantity}</div>
-    <div><strong>Description</strong>: ${productController.product.description}</div>
+    <div><strong>Codice</strong>: ${productController.product.code}</div>
+    <div><strong>Prezzo</strong>: ${productController.product.price}</div>
+    <div><strong>Quantità</strong>: ${productController.product.quantity}</div>
+    <div><strong>Descrizione</strong>: ${productController.product.description}</div>
     <h:form><h:commandLink action="#{productController.catalogProducts}" value="Catalogo"></h:commandLink></h:form>
 </f:view>
+</body>
 </html>

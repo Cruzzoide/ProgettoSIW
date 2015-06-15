@@ -27,13 +27,13 @@ public class Customer {
     @Temporal(TemporalType.TIMESTAMP)
     private Date registrationDate;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})
     private Address address;
 
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "customer_id")
+    @OneToMany(mappedBy = "customer_id", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Order> orders;
 
     public Customer(){

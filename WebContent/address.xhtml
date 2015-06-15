@@ -4,12 +4,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
 <f:view>
-    <h1>Address details:</h1>
-    <div><strong>Street</strong>: ${customerController.address.street}</div>
-    <div><strong>City</strong>: ${customerController.address.city}</div>
-    <div><strong>Zip Code</strong>: ${customerController.address.zipcode}</div>
-    <div><strong>Country</strong>: ${customerController.address.country}</div>
+    <h:form>
+    <h1>Dettagli Indirizzo:</h1>
+        <c:if test="#{customerController.customer!=null}">
+    <div><strong>Via</strong>: ${customerController.address.street}</div>
+    <div><strong>Città</strong>: ${customerController.address.city}</div>
+    <div><strong>CAP</strong>: ${customerController.address.cap}</div>
+    <div><strong>Stato</strong>: ${customerController.address.country}</div>
+    <div><h:link value="Torna alla scheda di ${customerController.customer.firstName}"
+                 outcome="customer"
+                 rendered="#{adminController.admin!=null}"/></div>
+    <div><h:link value="Torna ai Clienti"
+                 outcome="customers"
+                 rendered="#{adminController.admin!=null}"/></div>
+        </c:if>
+        <c:if test="#{providerController.provider!=null}">
+            <div><strong>Via</strong>: ${providerController.address.street}</div>
+            <div><strong>Città</strong>: ${providerController.address.city}</div>
+            <div><strong>CAP</strong>: ${providerController.address.cap}</div>
+            <div><strong>Stato</strong>: ${providerController.address.country}</div>
+            <div><h:link value="Torna alla scheda di ${providerController.provider.name}"
+                         outcome="provider"/></div>
+            <div><h:link value="Torna ai Fornitori"
+                         outcome="providers"/></div>
+        </c:if>
+    </h:form>
 </f:view>
+</body>
 </html>

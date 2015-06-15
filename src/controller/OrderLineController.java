@@ -1,7 +1,6 @@
 package controller;
 
 import facade.OrderLineFacade;
-import model.Order;
 import model.OrderLine;
 import model.Product;
 
@@ -26,14 +25,11 @@ public class OrderLineController {
     @ManagedProperty(value = "#{productController}")
     private ProductController productController;
 
-    public String createOrderLine(Order o, Product p) {
+    public String createOrderLine(Product p) {
         OrderLine orderLine = new OrderLine(p.getPrice(),quantity,p);
 
-        if (p.getQuantity() - quantity >= 0)  {
             this.orderController.getOrderLines().add(orderLine);
             return "basket";
-        }
-        return "index";
     }
 
 

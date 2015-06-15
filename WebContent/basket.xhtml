@@ -5,23 +5,31 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
 <f:view>
     <h:form>
     <h1>Riepilogo ordine:</h1>
-        <table>
+        <table class="table table-striped">
+        <thead>
             <tr>
                 <th>Nome Prodotto   </th>
                 <th>Prezzo Unitario   </th>
                 <th>Quantità   </th>
                 <th>Prezzo   </th>
             </tr>
+            </thead>
             <ui:repeat value="#{orderController.orderLines}" var="orderLine">
                 <tr>
                     <td><h:commandLink action="#{productController.findProduct(orderLine.product.id)}" value="#{orderLine.product.name}"></h:commandLink></td>
                     <td>${orderLine.unitPrice}</td>
                     <td>${orderLine.quantity}</td>
                     <td>${orderLine.unitPrice * orderLine.quantity}</td>
-                    <td><h:commandLink action="#{orderController.deleteProductFromOrder(orderLine.id)}" value="Cancella Prodotto dall'ordine"></h:commandLink></td>
+                    <td><h:commandLink action="#{orderController.deleteProductFromOrder(orderLine)}" value="Cancella Prodotto dall'ordine"></h:commandLink></td>
                 </tr>
             </ui:repeat>
         </table>
@@ -31,4 +39,5 @@
         <div><h:commandLink action="#{orderController.closeOrder}" value="Chiudi ordine"></h:commandLink></div>
     </h:form>
 </f:view>
+</body>
 </html>

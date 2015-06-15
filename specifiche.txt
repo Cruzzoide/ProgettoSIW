@@ -3,7 +3,9 @@ SPECIFICHE DEL PROGETTO DI SIW - APPELLO GIUGNO 2015
 Russo Carlo Maria (448962)
 Sampieri Michele (445155)
 Silvi Leonardo (451937) 
-
+===========================================================
+Il progetto è stato costruito mediante l'editor IntelliJ 
+Il database utlizzato è MySQL (il file database.sql è apribile in formato testo e contiene tutte le tabelle e le righe di quest'ultime
 ===========================================================
 
 Caso d'uso UC1: Consulta listino -> OK
@@ -32,4 +34,6 @@ L'amministratore loggato può visualizzare tutti gli ordini e per ciascuno di ess
 
 Caso d'uso UC6: Evasione ordine
 L'amministratore loggato vede tutti gli ordini con i relativi status: se l'ordine è chiuso e se nel magazzino c'è una sufficiente quantità di prodotti, allora è possibile evaderlo, altrimenti il sistema mostra un messaggio.
+
+===========================================================
 

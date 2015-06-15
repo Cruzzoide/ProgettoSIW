@@ -14,11 +14,12 @@ import java.util.List;
 @Stateless(name="cFacade")
 public class CustomerFacade {
 
-    @PersistenceContext(unitName = "unit-jee-es1")
+    @PersistenceContext(unitName = "unit-progetto-siw")
     private EntityManager em;
 
     public Customer createCustomer(String firstName, String lastName, String email, Date dateOfBirth, String password, Address address) {
         Customer customer = new Customer(firstName,lastName,email,dateOfBirth,address,password);
+
         em.persist(customer);
         return customer;
     }
@@ -64,4 +65,5 @@ public class CustomerFacade {
 
         return query.getResultList();
     }
+
 }

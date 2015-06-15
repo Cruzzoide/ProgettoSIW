@@ -5,6 +5,12 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
 <f:view>
     <h:form>
         <h1>Inserisci la quantità desiderata</h1>
@@ -15,7 +21,8 @@
                                        id="quantita"/> <h:message for="quantita"/></li>
 
         <h:commandButton styleClass="btn btn-primary" value="Aggiungi ad ordine"
-                         action="#{orderLineController.createOrderLine(orderController.order, productController.product)}"/>
+                         action="#{orderLineController.createOrderLine(productController.product)}"/>
     </h:form>
 </f:view>
+</body>
 </html>

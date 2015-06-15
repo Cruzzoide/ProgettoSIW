@@ -15,9 +15,8 @@ public class Address {
     @Column(nullable = false)
     private String city;
 
-
     @Column(nullable = false)
-    private String zipcode;
+    private String cap;
 
     @Column(nullable = false)
     private String country;
@@ -25,10 +24,10 @@ public class Address {
     public Address(){
     }
 
-    public Address(String street, String city, String zipcode, String country){
+    public Address(String street, String city, String cap, String country){
         this.street = street;
         this.city = city;
-        this.zipcode = zipcode;
+        this.cap = cap;
         this.country = country;
     }
 
@@ -41,7 +40,7 @@ public class Address {
 
     public String getStreet() {return street;}
 
-    public String getZipcode() {return zipcode;}
+    public String getcap() {return cap;}
 
     public void setCity(String city) {this.city = city;}
 
@@ -50,16 +49,16 @@ public class Address {
 
     public void setStreet(String street) {this.street = street;}
 
-    public void setZipcode(String zipcode) {this.zipcode = zipcode;}
+    public void setcap(String cap) {this.cap = cap;}
 
 
     public boolean equals(Object obj) {
         Address address = (Address)obj;
-        return this.getZipcode().equals(address.getZipcode());
+        return this.getcap().equals(address.getcap());
     }
 
     public int hashCode() {
-        return this.zipcode.hashCode();
+        return this.cap.hashCode();
     }
 
     public String toString() {
@@ -69,12 +68,9 @@ public class Address {
         sb.append(", street='").append(street);
         sb.append(", city=").append(city);
         sb.append(", country='").append(country);
-        sb.append(", zipcode='").append(zipcode);
+        sb.append(", cap='").append(cap);
         sb.append("}\n");
         return sb.toString();
     }
 
 }
-
-
-
